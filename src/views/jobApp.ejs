@@ -745,7 +745,7 @@ function basic()
           "<label for='percentage" +
           edu_counter +
           "'>Percentage: </label>" +
-          "<input type='text' name=edu["+edu_counter+"][percentage]  id='name=edu["+edu_counter+"][percentage]'>";
+          "<input type='text' name=edu["+edu_counter+"][percentage]  id='edu["+edu_counter+"][percentage]'>";
         cell5.innerHTML =
           "<input type='button' value='-' name='removeRow" +
           edu_counter +
@@ -850,9 +850,7 @@ function basic()
         let cell3 = row.insertCell();
 
         cell1.innerHTML =
-          "<select name='lang["+lan_counter+"][language]' id='language" +
-          lan_counter +
-          "'>" +
+          "<select name='lang["+lan_counter+"][language]' id='lang["+lan_counter+"][language]'>" +
           "<option value='lan_select'" +
           "selected disabled>Select</option>" +
           "<option value='english'" +
@@ -1547,9 +1545,10 @@ let reff=JSON.stringify(obj_reff)
         xhttp.open("GET", "insert_pref?id="+id+"&values="+values[i]+"&noticePeriod="+noticePeriod+"&department="+department+"&currentCTC="+currentCTC+"&expectedCTC="+expectedCTC+"", true);
         xhttp.send(); 
         }
-        window.location.href="/getdata"
-        modal.style.display = "none";
-       modal1.style.display = "block";
+
+
+        //window.location.href="/getdata"
+   
         
       }
 

@@ -321,7 +321,7 @@ else
     let cid;
     let edu1;
     let cnt=0;
-   res.send(req.body);
+  // res.send(req.body);
     edu1=req.body.edu;
     work1=req.body.work;
     lang1=req.body.lang;
@@ -582,11 +582,12 @@ connection.query(
 
     
     
-     // res.redirect("/getdata")
+      
     } catch (err) {
     console.log(err.message);
   }
 }
+res.redirect("/getdata")
 });
 
 // const userRoutes = require("./src/routes/user/userRoutes");
@@ -885,7 +886,8 @@ if(req.query.i==0)
 
 app.get("/insert_lang", (req, res) => {
   //
-
+  if(req.query.i==0)
+  {
   sql_del2="DELETE Language_detail FROM Language_detail INNER JOIN basic ON Language_detail.u_id=basic.id WHERE Language_detail.u_id ="+req.query.id;
   console.log(sql_del2);
   connection.query(
@@ -929,6 +931,41 @@ app.get("/insert_lang", (req, res) => {
       );
     }
     );
+  }
+  else
+  {
+    let lcheck1=req.query.lang+"_"+req.query.read;
+    let lcheck2=req.query.lang+"_"+req.query.write;
+    let lcheck3=req.query.lang+"_"+req.query.speak;
+    console.log(lcheck1);
+    
+    
+    sql_check="SELECT option_master.s_id,select_master.id ,option_master.id,option_master.name from option_master LEFT JOIN select_master on select_master.id=option_master.s_id WHERE option_master.value='"+lcheck1+"' or option_master.value='"+lcheck2+"' or option_master.value='"+lcheck3+"'";
+    connection.query(
+      sql_check,
+      function(err, results, fields) {
+        console.log("option",err);
+        console.log("option result",results);    
+  
+        
+  
+        for (let j = 0; j < results.length; j++) {
+          console.log("check",results[j].id); 
+          sql_lang="INSERT INTO `Language_detail`(`u_id`, `option_id`) VALUES ('"+req.query.id+"','"+results[j].id+"')"
+          connection.query(
+            sql_lang,
+            function(err, insert, fields) {
+              console.log("insert",err);    
+              console.log("insert",insert);
+      }
+      );
+          
+        }
+        
+  
+        }
+        );
+  }
 
 });
 

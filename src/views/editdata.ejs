@@ -902,9 +902,7 @@
           let cell3 = row.insertCell();
   
           cell1.innerHTML =
-            "<select name='tech["+tech_counter+"][technology]' id='technology" +
-            tech_counter +
-            "'>" +
+            "<select name='tech["+tech_counter+"][technology]' id='tech["+tech_counter+"][technology]'>" +
             "<option value='select" +
             tech_counter +
             "' selected disabled>Select</option>" +
@@ -914,9 +912,9 @@
             "<option value='Python'>Python</option>" +
             "</select>";
           cell2.innerHTML =
-            "<input type='radio' name='tech["+tech_counter+"][status]' id='tech["+tech_counter+"][status]' value='beginer' /> Beginer" +
-            "<input type='radio' name='tech["+tech_counter+"][status]' id='tech["+tech_counter+"][status]' value='mediocre'/> Mediocre" +
-            "<input type='radio' name='tech["+tech_counter+"][status]' id='tech["+tech_counter+"][status]' value='expert' /> Expert";
+            "<input type='radio' name='tech["+tech_counter+"][status]' id='tech["+tech_counter+"][status1]' value='beginer' /> Beginer" +
+            "<input type='radio' name='tech["+tech_counter+"][status]' id='tech["+tech_counter+"][status2]' value='mediocre'/> Mediocre" +
+            "<input type='radio' name='tech["+tech_counter+"][status]' id='tech["+tech_counter+"][status3]' value='expert' /> Expert";
           cell3.innerHTML =
             "<input type='button' value= '-' name='removeRow" +
             tech_counter +
@@ -1426,7 +1424,7 @@ function basic()
          
           }
         };
-        xhttp.open("GET", "insert_work?id="+id+"&work="+workexp+"&designation="+designation+"&from="+from+"&to="+to+"", true);
+        xhttp.open("GET", "insert_work?id="+id+"&work="+workexp+"&designation="+designation+"&from="+from+"&to="+to+"&i="+i+"", true);
         xhttp.send();
         console.log(i);
 
@@ -1495,7 +1493,7 @@ function insert_lang() {
          
           }
         };
-        xhttp.open("GET", "insert_lang?id="+id+"&lang="+lang+"&read="+read+"&write="+write+"&speak="+speak+"", true);
+        xhttp.open("GET", "insert_lang?id="+id+"&lang="+lang+"&read="+read+"&write="+write+"&speak="+speak+"&i="+i+"", true);
         xhttp.send();
         
 
@@ -1616,9 +1614,6 @@ function insert_lang() {
           
         }
       
-
-        modal.style.display = "none";
-       modal1.style.display = "block";
 
         
       }
