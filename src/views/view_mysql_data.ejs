@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maitrak</title>
+  <style>
+   body {
+margin: 0;
+}
+.stage {
+animation: animateBg 10s linear infinite;
+background-image: linear-gradient(0deg,#cf5c5c,#c19b4a,#def2a0,#c6ee4a,#42eca6,#64b3d9,#208ea2,#498ada,#5b73df,#897ed3,#cf5c5c,#c19b4a);
+background-size: 100% 1100%;
+height: 100vh;
+width: 100vw;
+}
+@keyframes animateBg {
+0% { background-position: 0% 0%; }
+100% { background-position: 0% 100%; }
+}
+
+    .black {
+        background-color: rgb(116, 129, 131);
+        font-size: 15px;
+    }
+    a{
+      text-decoration: none;
+    }
+    table {
+        background-color: #91c5fa;
+    }
+    input.text
+    {
+      background-color: rgb(255, 255, 255);
+    }
+
+    input.button{
+
+      display: block;
+          width: 100%;
+          border: none;
+          background-color: #7a8edc;
+          color: rgb(0, 0, 0);
+          
+          
+         
+          text-align: center;
+
+    }
+    button
+    {
+      display: block;
+          width: 100%;
+          border: none;
+          background-color: rgb(54, 150, 228);
+         
+          
+          
+         
+          text-align: center;
+
+    }
+td{
+  text-align: center;
+}
+input
+{
+  text-align: center;
+}
+
+
+/* Center the loader */
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 120px;
+  height: 120px;
+  margin: -76px 0 0 -76px;
+  border-radius: 50%;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+/* @-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+} */
+
+/* Add animation to "page content" */
+/* .animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+} */
+
+/* @-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+} */
+
+#myDiv {
+  display: none;
+  text-align: center;
+}
+
+
+</style>
+</head>
+<body style="font-family: Arial, Helvetica, sans-serif;" onload="myFunction()" class="stage"> 
+  <div id="loader">
+    <svg version="1.1" id="L5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+      viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
+      <circle fill="#fff" stroke="none" cx="6" cy="50" r="6">
+        <animateTransform 
+           attributeName="transform" 
+           dur="1s" 
+           type="translate" 
+           values="0 15 ; 0 -15; 0 15" 
+           repeatCount="indefinite" 
+           begin="0.1"/>
+      </circle>
+      <circle fill="#fff" stroke="none" cx="30" cy="50" r="6">
+        <animateTransform 
+           attributeName="transform" 
+           dur="1s" 
+           type="translate" 
+           values="0 10 ; 0 -10; 0 10" 
+           repeatCount="indefinite" 
+           begin="0.2"/>
+      </circle>
+      <circle fill="#fff" stroke="none" cx="54" cy="50" r="6">
+        <animateTransform 
+           attributeName="transform" 
+           dur="1s" 
+           type="translate" 
+           values="0 5 ; 0 -5; 0 5" 
+           repeatCount="indefinite" 
+           begin="0.3"/>
+      </circle>
+    </svg>
+    </div>
+  <div style="display:none;" id="myDiv" class="animate-bottom">
+  <%let data=Object.keys(results[0]);
+  let header1=data[0];
+   let header2=data[6];   
+   let header3=data[2]; 
+   let header4=data[3]; 
+   let header5=data[4]; 
+      %>
+<div style="float: left;margin-left: 45%;" ><h5><%="Hello Student"%></h5></div>
+<div style="float: right;"><form action="/getData" >
+<input type="text" name="search" id="search">
+<input type="submit" class="button" value="Search">
+</form></div>
+
+
+<table style="width: 100%;">
+  <tr>
+    <td><a href="/getData?order_by=<%=header1%>"><button><%= header1%></button></a>
+      <a href="/getData?order_by=<%=header1%>"><button>^</button></a>
+      <a href="/getData?order_by=<%=header1%> desc"><button>v</button></a>
+    
+    
+    </td>
+    <td><a href="/getData?order_by=<%=data[1]%>"><button><%= data[1]%></button></a>
+      <a href="/getData?order_by=<%=data[1]%>"><button>^</button></a>
+      <a href="/getData?order_by=<%=data[1]%> desc"><button>v</button></a>
+    </td>
+    <td><a href="/getData?order_by=<%=header3%>"><button><%= header3%></button></a>
+      <a href="/getData?order_by=<%=header3%>"><button>^</button></a>
+      <a href="/getData?order_by=<%=header3%> desc"><button>v</button></a>
+    </td>
+    <td><a href="/getData?order_by=<%=header4%>"><button><%= header4%></button></a>
+      <a href="/getData?order_by=<%=header4%>"><button>^</button></a>
+      <a href="/getData?order_by=<%=header4%> desc"><button>v</button></a>
+    </td>
+    <td><a href="/getData?order_by=<%=header5%>"><button><%= header5%></button></a>
+      <a href="/getData?order_by=<%=header5%>"><button>^</button></a>
+      <a href="/getData?order_by=<%=header5%> desc" ><button>v</button></a>
+    
+    </td>
+    <td><a href="/getData?order_by=<%=data[5]%>"><button><%= data[5]%></button></a>
+      <a href="/getData?order_by=<%=data[5]%>"><button>^  </button></a>
+      <a href="/getData?order_by=<%=data[5]%> desc"><button>v</button></a>
+    </td>
+    <td>
+      Action
+    </td>
+    
+  </tr>
+
+
+
+
+  
+  <% for (let i = 0; i < results.length; i++){ %>
+    <form action="/updateData" method="post">
+    <td>
+     
+        <input type="text"  class="text" name="id" value="<%=results[i].id %>">  
+      </td>
+      <td>
+        <input type="text"  class="text" name="name" value="<%=results[i].full_name %>">  
+      </td>
+      <td>
+        <input type="text"  class="text" name="roll" value="<%=results[i].roll %>">  
+      </td>
+      <td>
+        <input type="text"  class="text" name="subject" value="<%=results[i].subject %>">  
+      </td>
+      <td>
+        <input type="text"  class="text" name="marks" value="<%=results[i].marks %>">  
+      </td>
+      <td>
+        <input type="text"  class="text" name="perc" value="<%=results[i].perc %>">  
+      </td>
+      <td>  
+        <input type="submit" class="button" value="Edit">
+      </form>
+    </td>
+    <td>  
+      <form action="/deldata" method="post">
+        <input type="hidden" name="id" value="<%=results[i].id %>">
+      <input type="submit" class="button" value="Remove">
+    </form>
+  </td>
+    
+    </tr>
+  <%}%>
+
+
+</table>
+<br>
+<div style="text-align: center;">
+ <%for(let i=0;i<total;i++){%>
+
+  <a <%if(id==i){%>class="black"<%}%> href="/getData?id=<%=i%>&total=<%=total%>&order_by=<%=order_by%>"><%= i %></a>
+   <%}%> 
+  </div>
+  </div>
+  <script>
+  var myVar;
+  
+  function myFunction() {
+    myVar = setTimeout(showPage, 900);
+  }
+  
+  function showPage() {
+    document.getElementById("loader").style.display = "none";
+    document.getElementById("myDiv").style.display = "block";
+  }
+  </script>
+</body>
+</html>
+
+

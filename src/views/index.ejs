@@ -1,0 +1,10 @@
+<%- include('partial/header.ejs') %>
+    <div class="container">
+        <%for(var i=0;i<userData.length;i++){%>
+            <p>
+                <%=userData[i].name %>
+            </p>
+            <img src="<%=userData[i].profileUrl %>">
+            <%}%>
+    </div>
+    <%- include('partial/footer.ejs') %>
